@@ -1,0 +1,61 @@
+openssh6.7p1之前可以使用以下方法设置黑白名单：
+限制IP：
+#/etc/hosts.allow  //白名单
+sshd:单个IP/IP段
+in.telnetd:单个IP/IP段
+重启ssh/telnet服务
+
+#/etc/hosts.deny   //黑名单
+sshd:ALL    //限制所有
+in.telnetd:ALL
+重启ssh/telnet服务
+
+限制用户：
+#vim /etc/ssh/sshd_config
+AllowUsers root@192.168.80.51           允许ip为192.168.80.51以root用户登录本机。            
+DenyUsers jack@192.168.80.53            不允许ip为192.168.80.53以jack用户登录本机。               
+修改后需重启SSHD服务 service sshd restart            
+
+openssh6.7p1以后不再支持tcp_wrapper，所以hosts.allow等就对sshd不作用了。可参考如下方法修改SSHD配置文件实现。telnet继续支持/etc/hoss.allow等文件
+sshd白名单设置：
+AllowUsers user@IP_address
+sshd黑名单设置：
+DenyUsers user@IP_address
+
+具体如下：       
+#vim /etc/ssh/sshd_config             
+在配置文件最后添加如下信息            
+AllowUsers root@192.168.80.51           允许ip为192.168.80.51以root用户登录本机。            
+DenyUsers jack@192.168.80.53            不允许ip为192.168.80.53以jack用户登录本机。               
+修改后需重启SSHD服务 service sshd restart            
+
+需注意的是允许的登录的主机必须是  用户+ip的方式使用，不能单独写ip使用。 
+
+
+telnet
+方法一、
+#/etc/hosts.allow  //白名单
+sshd:单个IP/IP段
+in.telnetd:单个IP/IP段
+重启ssh/telnet服务
+
+#/etc/hosts.deny   //黑名单
+sshd:ALL    //限制所有
+in.telnetd:ALL
+重启ssh/telnet服务
+方法二：如果你对其默认的设置不满意，有必要对其服务范围进行限制。假设你的主机的ip是172.16.81.220，就可以按如下方式设置了。 
+
+#vi /etc/xinetd.d/telnet 
+service telnet 
+
+{ 
+disable　　　　 = no #激活 telnet 服务,no 
+bind 　　　　　 = 172.16.81.220 #帮定你的 ip 只通过这个ip 
+only_from 　　　= 210.45.0.0/16 #只允许 210.45.0.0 ~ 210.45.255.255 这个网段进入 ，也可以是某一个ip。
+only_from 　　　= .edu.cn #只有教育网才能进入！ 
+no_access 　　　= 210.45.160.20 #这个ip不可登陆 不同的ip之间使用空格隔开，也可是网段。
+access_times　　= 8:00-12:00 20:00-23:59 # 每天只有这两个时间段开放服务 
+...... 
+}
+
+然后重启一下xinetd服务（service xinetd restart）

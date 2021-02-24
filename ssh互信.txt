@@ -1,0 +1,145 @@
+
+ssh互信不受系统版本和openssh版本的影响（即版本不同，ssh不同均可实现免密登录）
+
+以下是Asianux4.4系统上升级完openssh后配置ssh互信的方法，过程很详细，请您参考
+
+1：首先准备两台Asianxu4.4的环境，查看下ssh对应的版本，/etc/hosts文件配置对应的解析关系
+[root@node1 openssh]# rpm -qa|grep openssh
+openssh-askpass-7.4p1-1.x86_64
+openssh-debuginfo-7.4p1-1.x86_64
+openssh-askpass-gnome-7.4p1-1.x86_64
+openssh-server-7.4p1-1.x86_64
+openssh-clients-7.4p1-1.x86_64
+openssh-7.4p1-1.x86_64
+---------------------------------------------
+[root@node2 ~]# rpm -qa|grep openssh
+openssh-debuginfo-7.4p1-1.x86_64
+openssh-askpass-gnome-7.4p1-1.x86_64
+openssh-askpass-7.4p1-1.x86_64
+openssh-clients-7.4p1-1.x86_64
+openssh-7.4p1-1.x86_64
+openssh-server-7.4p1-1.x86_64
+-------------------------------------
+[root@node1 openssh]# cat /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.8.44	node1
+192.168.8.66	node2
+----------------------------------------
+[root@node2 ~]# cat /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.8.44	node1
+192.168.8.66	node2
+
+2：在两台机器上分别生成相应的公钥私钥，输入ssh-keygen命令后，按3次回车生成
+[root@node1 openssh]# ssh-keygen 
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:xpJgImoMDGG1xvF17CsuIubf9u3w7yacmAk7WsAoGV0 root@node1
+The key's randomart image is:
++---[RSA 2048]----+
+|oo.oE  ...       |
+|+...+ . ..       |
+|+.o+o.  .        |
+|+++o . o .       |
+|++ o  o S .      |
+|o   .. + .       |
+|     .+.* .      |
+| o .o= =++ .     |
+|o.oo+.+..+=o     |
++----[SHA256]-----+
+---------------------------------------------
+[root@node2 ~]# ssh-keygen 
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:JIzEAU5aPBOwFLN3rAEYBdPhtzb6zom8iS14DOXT4/A root@node2
+The key's randomart image is:
++---[RSA 2048]----+
+|*%O=o.           |
+|oOO.oo           |
+|o.o=ooo .        |
+|  o.+. o         |
+| o o+   S        |
+|. +oo.           |
+|.o.= .           |
+|o+o=E.           |
+|.o*o=            |
++----[SHA256]-----+
+3：将两台机器的公钥存放到一个名为authorized_keys的文件中，并保证两台文件对应的/root/.ssh目录中都有该文件
+
+在node1上操作
+[root@node1 openssh]# cd /root/.ssh/
+
+[root@node1 .ssh]# ls
+id_rsa  id_rsa.pub  known_hosts
+
+[root@node1 .ssh]# cat id_rsa.pub >> authorized_keys
+
+[root@node1 .ssh]# scp authorized_keys node2:/root/.ssh/
+The authenticity of host 'node2 (192.168.8.66)' can't be established.
+ECDSA key fingerprint is SHA256:ALfsRPlzsxgkO13aVSB03VGxBxcEPS+TJ6Dg5aDYRT8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'node2,192.168.8.66' (ECDSA) to the list of known hosts.
+root@node2's password: 
+authorized_keys                                                       100%  392   304.2KB/s   00:00    
+[root@node1 .ssh]#
+---------------------------------------------
+在node2上操作
+[root@node2 ~]# cd .ssh/
+
+[root@node2 .ssh]# ls
+authorized_keys  id_rsa  id_rsa.pub  known_hosts
+
+[root@node2 .ssh]# cat id_rsa.pub >> authorized_keys 
+
+[root@node2 .ssh]# scp authorized_keys node1:/root/.ssh/
+root@node1's password: 
+authorized_keys                                                                     100%  784   612.6KB/s   00:00    
+[root@node2 .ssh]#
+
+4：进行ssh免密登陆验证
+node2节点进行验证
+[root@node2 .ssh]# ssh node1
+Last login: Sat Oct  1 23:52:10 2016 from ::1
+[root@node1 ~]# logout
+Connection to node1 closed.
+[root@node2 .ssh]# ssh node2
+The authenticity of host 'node2 (192.168.8.66)' can't be established.
+ECDSA key fingerprint is SHA256:ALfsRPlzsxgkO13aVSB03VGxBxcEPS+TJ6Dg5aDYRT8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'node2,192.168.8.66' (ECDSA) to the list of known hosts.
+Last login: Wed Nov 21 20:47:29 2018 from 192.168.8.1
+[root@node2 ~]# logout
+Connection to node2 closed.
+[root@node2 .ssh]# ssh node1
+Last login: Sat Oct  1 23:59:50 2016 from 192.168.8.66
+[root@node1 ~]# logout
+Connection to node1 closed.
+[root@node2 .ssh]# ssh node2
+Last login: Wed Nov 21 20:58:28 2018 from 192.168.8.66
+[root@node2 ~]# logout
+Connection to node2 closed.
+----------------------------------------------------------
+node1节点进行验证
+[root@node1 .ssh]# ssh node1
+Last login: Sun Oct  2 00:01:08 2016 from 192.168.8.66
+[root@node1 ~]# logout
+Connection to node1 closed.
+[root@node1 .ssh]# ssh node2
+Last login: Wed Nov 21 20:59:41 2018 from 192.168.8.66
+[root@node2 ~]# logout
+Connection to node2 closed.
+[root@node1 .ssh]#
+
+可以看到测试结果中已经不需要输入root口令完成登录系统了，至此，ssh互信工作完成

@@ -1,0 +1,88 @@
++ make -s mrproper
++ make -s ARCH=mips loongson3_defconfig
++ make -s ARCH=mips V=1 -j4 vmlinuz
+[01m[Kdrivers/platform/mips/loongson-ea-pm-hotkey.c:441:2:[m[K [01;35m[Kwarning: [m[Kpassing argument 1 of '[01m[Kreadl[m[K' makes pointer from integer without a cast [enabled by default]
+[01m[Kdrivers/platform/mips/loongson-ea-pm-hotkey.c:442:2:[m[K [01;35m[Kwarning: [m[Kpassing argument 1 of '[01m[Kreadl[m[K' makes pointer from integer without a cast [enabled by default]
+[01m[Kdrivers/platform/mips/loongson-ea-pm-hotkey.c:443:2:[m[K [01;35m[Kwarning: [m[Kpassing argument 1 of '[01m[Kreadl[m[K' makes pointer from integer without a cast [enabled by default]
+[01m[Kdrivers/platform/mips/loongson-ea-pm-hotkey.c:446:3:[m[K [01;35m[Kwarning: [m[Kpassing argument 2 of '[01m[Kwritel[m[K' makes pointer from integer without a cast [enabled by default]
+[01m[Kdrivers/platform/mips/loongson-ea-pm-hotkey.c:448:3:[m[K [01;35m[Kwarning: [m[Kpassing argument 2 of '[01m[Kwritel[m[K' makes pointer from integer without a cast [enabled by default]
+[01m[Kdrivers/platform/mips/loongson-ea-pm-hotkey.c:450:3:[m[K [01;35m[Kwarning: [m[Kpassing argument 2 of '[01m[Kwritel[m[K' makes pointer from integer without a cast [enabled by default]
+[01m[Kdrivers/video/vivante/gc_hal_kernel_driver.c:1200:19:[m[K [01;35m[Kwarning: [m[Kassignment makes pointer from integer without a cast [enabled by default]
+[01m[Kdrivers/video/vivante/gc_hal_kernel_driver.c:1217:19:[m[K [01;35m[Kwarning: [m[Kassignment makes pointer from integer without a cast [enabled by default]
++ make -f ./scripts/Makefile.modpost vmlinux.o
++ make -f ./scripts/Makefile.build obj=init
++ make -s ARCH=mips V=1 -j4 modules
++ make -s ARCH=mips INSTALL_MOD_PATH=/root/rpmbuild/BUILDROOT/kernel-3.10.0-693.axs7.18.mips64el modules_install KERNELRELEASE=3.10.0-693.axs7.18.mips64el mod-fw=
++ make -s -j4 -C tools/perf V=1 WERROR=0 NO_LIBUNWIND=1 HAVE_CPLUS_DEMANGLE=1 NO_GTK2=1 NO_LIBNUMA=1 NO_STRLCPY=1 NO_BIONIC=1 prefix=/usr DESTDIR=/root/rpmbuild/BUILDROOT/kernel-3.10.0-693.axs7.18.mips64el all
+  BUILD:   Doing 'make [33m-j4[m' parallel build
+make -C /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build CFLAGS= LDFLAGS= fixdep
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=. obj=fixdep
+make FIXDEP=1 -f Makefile.perf 
+make -C /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/lib/api/ O= libapi.a
+make -C /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/lib/traceevent/ plugin_dir=/usr/lib/traceevent/plugins O= libtraceevent.a
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./fd obj=libapi
+make -C /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/lib/subcmd/ O= libsubcmd.a
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./fs obj=libapi
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=pmu-events obj=jevents
+make -C /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/lib/traceevent/ plugin_dir=/usr/lib/traceevent/plugins O= plugins
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=. obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./util obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=. obj=perf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=pmu-events obj=pmu-events
+make -C /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/lib/traceevent/ plugin_dir=/usr/lib/traceevent/plugins O= libtraceevent-dynamic-list
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./arch obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./arch/mips obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./ui obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./ui/browsers obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./ui/tui obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./scripts obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./scripts/perl/Perf-Trace-Util obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./scripts/python/Perf-Trace-Util obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./bench obj=perf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./tests obj=perf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./util/intel-pt-decoder obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./util/scripting-engines obj=libperf
++ make -j4 -C tools/power/cpupower CPUFREQ_BENCH=false
+make: Entering directory `/root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/power/cpupower'
+make: Leaving directory `/root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/power/cpupower'
++ make ARCH=mips INSTALL_HDR_PATH=/root/rpmbuild/BUILDROOT/kernel-3.10.0-693.axs7.18.mips64el/usr headers_install
++ make -s -j4 -C tools/perf V=1 WERROR=0 NO_LIBUNWIND=1 HAVE_CPLUS_DEMANGLE=1 NO_GTK2=1 NO_LIBNUMA=1 NO_STRLCPY=1 NO_BIONIC=1 prefix=/usr DESTDIR=/root/rpmbuild/BUILDROOT/kernel-3.10.0-693.axs7.18.mips64el lib=lib64 install
+  BUILD:   Doing 'make [33m-j4[m' parallel build
+make -C /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build CFLAGS= LDFLAGS= fixdep
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=. obj=fixdep
+make FIXDEP=1 -f Makefile.perf install
+make -C /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/lib/api/ O= libapi.a
+make -C /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/lib/traceevent/ plugin_dir=/usr/lib64/traceevent/plugins O= libtraceevent.a
+make -C /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/lib/subcmd/ O= libsubcmd.a
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./fd obj=libapi
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./fs obj=libapi
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=pmu-events obj=jevents
+make -C /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/lib/traceevent/ plugin_dir=/usr/lib64/traceevent/plugins O= plugins
+make  -C Documentation  try-install-man
+make[3]: Nothing to be done for `try-install-man'.
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=pmu-events obj=pmu-events
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=. obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./util obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./arch obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./arch/mips obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./ui obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./scripts obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./scripts/perl/Perf-Trace-Util obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./scripts/python/Perf-Trace-Util obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./ui/browsers obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./ui/tui obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=. obj=perf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./bench obj=perf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./tests obj=perf
+make -C /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/lib/traceevent/ plugin_dir=/usr/lib64/traceevent/plugins O= libtraceevent-dynamic-list
+make -C /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/lib/traceevent/ plugin_dir=/usr/lib64/traceevent/plugins O= install_plugins
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./util/intel-pt-decoder obj=libperf
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=./util/scripting-engines obj=libperf
++ make -s -j4 -C tools/perf V=1 WERROR=0 NO_LIBUNWIND=1 HAVE_CPLUS_DEMANGLE=1 NO_GTK2=1 NO_LIBNUMA=1 NO_STRLCPY=1 NO_BIONIC=1 prefix=/usr DESTDIR=/root/rpmbuild/BUILDROOT/kernel-3.10.0-693.axs7.18.mips64el install-python_ext
+  BUILD:   Doing 'make [33m-j4[m' parallel build
+make -C /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build CFLAGS= LDFLAGS= fixdep
+make -f /root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/build/Makefile.build dir=. obj=fixdep
+make FIXDEP=1 -f Makefile.perf install-python_ext
++ make -C tools/power/cpupower DESTDIR=/root/rpmbuild/BUILDROOT/kernel-3.10.0-693.axs7.18.mips64el libdir=/usr/lib64 mandir=/usr/share/man CPUFREQ_BENCH=false install
+make: Entering directory `/root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/power/cpupower'
+make: Leaving directory `/root/rpmbuild/BUILD/kernel-3.10.0.axs7/linux-3.10.0-693.axs7.18.mips64el/tools/power/cpupower'

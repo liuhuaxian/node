@@ -1,0 +1,565 @@
+脚本启动于 2021年01月15日 星期五 17时51分37秒
++ export LC_COLLATE=C
++ LC_COLLATE=C
++ for i in '"$@"'
++ '[' add == --help -o add == -h ']'
++ for i in '"$@"'
++ '[' 4.19.90-5 == --help -o 4.19.90-5 == -h ']'
++ for i in '"$@"'
++ '[' /boot/vmlinuz-4.19.90-5 == --help -o /boot/vmlinuz-4.19.90-5 == -h ']'
++ [[ kernel-install == \i\n\s\t\a\l\l\k\e\r\n\e\l ]]
++ COMMAND=add
++ shift
++ KERNEL_VERSION=4.19.90-5
++ KERNEL_IMAGE=/boot/vmlinuz-4.19.90-5
++ [[ -x /sbin/new-kernel-pkg ]]
++ KERNEL_DIR=/boot
++ [[ 4.19.90-5 == *\+* ]]
++ case "$COMMAND" in
++ [[ /boot != \/\b\o\o\t ]]
++ /sbin/new-kernel-pkg --package kernel --install 4.19.90-5
++ PATH=/sbin:/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/lhx/.local/bin:/home/lhx/bin
++ lilo=/sbin/lilo
++ kernelName=vmlinuz
++ '[' -x ./grubby ']'
++ grubby=/sbin/grubby
++ '[' -f /etc/sysconfig/kernel ']'
++ . /etc/sysconfig/kernel
+++ UPDATEDEFAULT=yes
+++ DEFAULTKERNEL=kernel-kvm-guest-core
++ '[' -f /etc/sysconfig/uboot ']'
++ cfgGrub2=
++ cfgGrub2Efi=
++ cfgGrub=
++ cfgLilo=
++ cfgExtlinux=
++ cfguBoot=
++ runLilo=
++ grubConfig=
++ grub2Config=
++ grub2EfiConfig=
++ extlinuxConfig=
+++ uname -m
++ ARCH=mips64
++ '[' mips64 = ia64 ']'
++ '[' mips64 = ppc64 -o mips64 = ppc ']'
++ '[' mips64 = sparc -o mips64 = sparc64 ']'
++ '[' mips64 = s390 -o mips64 = s390x ']'
++ [[ mips64 =~ armv[5|7].*l ]]
++ [[ mips64 = \m\i\p\s\6\4 ]]
++ liloConfig=
+++ readlink -f /etc/grub.conf
++ grubConfig=/etc/grub.conf
+++ readlink -f /etc/grub2.cfg
++ grub2Config=/etc/grub2.cfg
++ '[' -f /etc/grub2.cfg ']'
+++ readlink -f /etc/grub2-efi.cfg
++ grub2Config=/boot/efi/EFI/BOOT/grub.cfg
++ bootPrefix=/boot
++ liloFlag=
++ isx86=
++ mode=
++ version=
++ initrd=
++ dracut=
++ dracuthostonly=
++ initrdfile=
++ devtreefile=
++ moddep=
++ verbose=
++ makedefault=
++ package=
++ mbkernel=
++ mbargs=
++ adddracutargs=
++ addplymouthinitrd=
++ '[' 4 -gt 0 ']'
++ case $1 in
++ [[ --package == --package\=* ]]
++ package=kernel
++ shift
++ shift
++ '[' 2 -gt 0 ']'
++ case $1 in
++ '[' -z '' ']'
++ mode=--install
++ shift
++ '[' 1 -gt 0 ']'
++ case $1 in
++ '[' -z --install ']'
++ '[' -z '' ']'
++ version=4.19.90-5
++ shift
++ '[' 0 -gt 0 ']'
++ '[' --install '!=' --install -a --install '!=' --remove -a --install '!=' --update -a --install '!=' --rpmposttrans ']'
++ '[' -z 4.19.90-5 ']'
++ '[' --install '!=' --install -a '' ']'
+++ echo
+++ cut -d . -f 1,2
++ kernelmajor=
++ '[' mips64 = ppc64 -o mips64 = ppc ']'
++ [[ -n '' ]]
++ kernelImage=/boot/vmlinuz-4.19.90-5
++ '[' -z '' ']'
++ INITRD_NAME_PREFIX=initrd
++ '[' -n '' ']'
+++ uname -m
++ '[' mips64 = ia64 ']'
++ initrdfile=/boot/initrd-4.19.90-5.img
++ '[' -n '' ']'
++ [[ mips64 =~ armv[5|7].*l ]]
++ '[' -n '' -o -n '' ']'
++ '[' --install == --install -a yes == yes -a -n kernel -a -n kernel-kvm-guest-core ']'
++ '[' kernel == kernel-kvm-guest-core -o kernel-core == kernel-kvm-guest-core ']'
++ '[' '' == make ']'
++ '[' '' == remove ']'
++ '[' '' == make ']'
++ '[' '' == remove ']'
++ '[' '!' -x /sbin/grubby ']'
++ '[' -n /etc/grub.conf ']'
++ '[' -f /etc/grub.conf ']'
++ '[' -n /boot/efi/EFI/BOOT/grub.cfg ']'
++ '[' -f /boot/efi/EFI/BOOT/grub.cfg ']'
++ cfgGrub2=1
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' -a -z '' ']'
++ '[' -n '' -a -n '' ']'
+++ cat /proc/cpuinfo
+++ grep 'cpu model'
+++ cut -f2 -d:
+++ uniq -c
++ cpuinfo='      4  ICT Loongson-3 V0.4  FPU V0.1'
+++ uname -r
++ livekernel=4.19.90-5
++ '[' --install == --install ']'
++ [[       4  ICT Loongson-3 V0.4  FPU V0.1 =~ Loongson-3 ]]
++ [[ 4.19.90-5 =~ kvmguest ]]
++ [[ 4.19.90-5 =~ 2k ]]
++ [[ 4.19.90-5 =~ kvmguest ]]
++ install
++ '[' '!' -f /boot/vmlinuz-4.19.90-5 ']'
++ INITRD=
++ '[' -f /boot/initrd-4.19.90-5.img ']'
++ DEVTREE=
++ '[' -n '' -a -f '' ']'
++ DEVTREEDIR=
++ '[' -n '' -a -d '' ']'
++ '[' -d /proc/iSeries ']'
+++ awk '{ if ($1 !~ /^[ \t]*#/ && $2 == "/") { print $1; }}' /etc/fstab
++ rootdevice=UUID=d73cbe9e-81ad-4674-9fe3-583f19676223
++ '[' UUID=d73cbe9e-81ad-4674-9fe3-583f19676223 = '' ']'
++ '[' -n '' -a -n '' -a '' '!=' elilo ']'
++ '[' -n '' ']'
++ '[' mips64 = s390 -o mips64 = s390x ']'
++ '[' mips64 = mips64 -a -f /etc/os-release ']'
++ . /etc/os-release
+++ NAME='RedFlag Asianux Server'
+++ VERSION='7 (Lotus)'
+++ ID=asianux
+++ ID_LIKE='rhel fedora'
+++ VERSION_ID=7
+++ PRETTY_NAME='RedFlag Asianux Server 7 (Lotus)'
+++ ANSI_COLOR='0;31'
+++ CPE_NAME=cpe:/o:asianux:asianux:7
+++ HOME_URL=https://www.chinaredflag.com/
+++ BUG_REPORT_URL=https://bugs.chinaredflag.com/
+++ ASIANUX_MANTISBT_PROJECT=Asianux-7
+++ ASIANUX_MANTISBT_PROJECT_VERSION=7
+++ ASIANUX_SUPPORT_PRODUCT=asianux
+++ ASIANUX_SUPPORT_PRODUCT_VERSION=7
++ title='RedFlag Asianux Server 7 (Lotus)'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n 1 ']'
++ '[' -n '' ']'
++ /sbin/grubby --grub2 -c /boot/efi/EFI/BOOT/grub.cfg --add-kernel=/boot/vmlinuz-4.19.90-5 --copy-default --title 'RedFlag Asianux Server 7 (Lotus)' '--args=root=UUID=d73cbe9e-81ad-4674-9fe3-583f19676223 ' '--remove-kernel=TITLE=RedFlag Asianux Server 7 (Lotus)'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -x /sbin/grub-to-pmon ']'
++ /sbin/grub-to-pmon
++ exit 0
++ /sbin/new-kernel-pkg --package kernel --mkinitrd --dracut --depmod --update 4.19.90-5
++ PATH=/sbin:/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/lhx/.local/bin:/home/lhx/bin
++ lilo=/sbin/lilo
++ kernelName=vmlinuz
++ '[' -x ./grubby ']'
++ grubby=/sbin/grubby
++ '[' -f /etc/sysconfig/kernel ']'
++ . /etc/sysconfig/kernel
+++ UPDATEDEFAULT=yes
+++ DEFAULTKERNEL=kernel-kvm-guest-core
++ '[' -f /etc/sysconfig/uboot ']'
++ cfgGrub2=
++ cfgGrub2Efi=
++ cfgGrub=
++ cfgLilo=
++ cfgExtlinux=
++ cfguBoot=
++ runLilo=
++ grubConfig=
++ grub2Config=
++ grub2EfiConfig=
++ extlinuxConfig=
+++ uname -m
++ ARCH=mips64
++ '[' mips64 = ia64 ']'
++ '[' mips64 = ppc64 -o mips64 = ppc ']'
++ '[' mips64 = sparc -o mips64 = sparc64 ']'
++ '[' mips64 = s390 -o mips64 = s390x ']'
++ [[ mips64 =~ armv[5|7].*l ]]
++ [[ mips64 = \m\i\p\s\6\4 ]]
++ liloConfig=
+++ readlink -f /etc/grub.conf
++ grubConfig=/etc/grub.conf
+++ readlink -f /etc/grub2.cfg
++ grub2Config=/etc/grub2.cfg
++ '[' -f /etc/grub2.cfg ']'
+++ readlink -f /etc/grub2-efi.cfg
++ grub2Config=/boot/efi/EFI/BOOT/grub.cfg
++ bootPrefix=/boot
++ liloFlag=
++ isx86=
++ mode=
++ version=
++ initrd=
++ dracut=
++ dracuthostonly=
++ initrdfile=
++ devtreefile=
++ moddep=
++ verbose=
++ makedefault=
++ package=
++ mbkernel=
++ mbargs=
++ adddracutargs=
++ addplymouthinitrd=
++ '[' 7 -gt 0 ']'
++ case $1 in
++ [[ --package == --package\=* ]]
++ package=kernel
++ shift
++ shift
++ '[' 5 -gt 0 ']'
++ case $1 in
++ initrd=make
++ shift
++ '[' 4 -gt 0 ']'
++ case $1 in
++ dracut=--dracut
++ shift
++ '[' 3 -gt 0 ']'
++ case $1 in
++ moddep=make
++ shift
++ '[' 2 -gt 0 ']'
++ case $1 in
++ '[' -z '' ']'
++ mode=--update
++ shift
++ '[' 1 -gt 0 ']'
++ case $1 in
++ '[' -z --update ']'
++ '[' -z '' ']'
++ version=4.19.90-5
++ shift
++ '[' 0 -gt 0 ']'
++ '[' --update '!=' --install -a --update '!=' --remove -a --update '!=' --update -a --update '!=' --rpmposttrans ']'
++ '[' -z 4.19.90-5 ']'
++ '[' --update '!=' --install -a '' ']'
+++ echo
+++ cut -d . -f 1,2
++ kernelmajor=
++ '[' mips64 = ppc64 -o mips64 = ppc ']'
++ [[ -n '' ]]
++ kernelImage=/boot/vmlinuz-4.19.90-5
++ '[' -z '' ']'
++ INITRD_NAME_PREFIX=initrd
++ '[' -n --dracut ']'
++ INITRD_NAME_PREFIX=initramfs
+++ uname -m
++ '[' mips64 = ia64 ']'
++ initrdfile=/boot/initramfs-4.19.90-5.img
++ '[' -n '' ']'
++ [[ mips64 =~ armv[5|7].*l ]]
++ '[' -n --dracut -o -n '' ']'
++ '[' -r /etc/vconsole.conf ']'
++ . /etc/vconsole.conf
+++ KEYMAP=cn
+++ FONT=latarcyrheb-sun16
++ '[' -r /etc/locale.conf ']'
++ . /etc/locale.conf
+++ LANG=zh_CN.UTF-8
++ for i in SYSFONT SYSFONTACM UNIMAP LANG KEYTABLE
+++ eval echo '$SYSFONT'
++++ echo
++ val=
++ '[' -n '' ']'
++ for i in SYSFONT SYSFONTACM UNIMAP LANG KEYTABLE
+++ eval echo '$SYSFONTACM'
++++ echo
++ val=
++ '[' -n '' ']'
++ for i in SYSFONT SYSFONTACM UNIMAP LANG KEYTABLE
+++ eval echo '$UNIMAP'
++++ echo
++ val=
++ '[' -n '' ']'
++ for i in SYSFONT SYSFONTACM UNIMAP LANG KEYTABLE
+++ eval echo '$LANG'
++++ echo zh_CN.UTF-8
++ val=zh_CN.UTF-8
++ '[' -n zh_CN.UTF-8 ']'
++ kernargs=' LANG=zh_CN.UTF-8'
++ for i in SYSFONT SYSFONTACM UNIMAP LANG KEYTABLE
+++ eval echo '$KEYTABLE'
++++ echo
++ val=
++ '[' -n '' ']'
++ '[' -n '' -a '' '!=' pc ']'
++ '[' --update == --install -a yes == yes -a -n kernel -a -n kernel-kvm-guest-core ']'
++ '[' make == make ']'
++ doDepmod
++ '[' -n '' ']'
++ depmod -ae -F /boot/System.map-4.19.90-5 4.19.90-5
++ '[' make == make ']'
++ doMkinitrd
++ '[' -n --dracut ']'
++ tool='dracut  -f /boot/initramfs-4.19.90-5.img 4.19.90-5'
++ '[' -n '' ']'
++ dracut -f /boot/initramfs-4.19.90-5.img 4.19.90-5
+cat: /lib/firmware/amd-ucode/: Is a directory
+cat: /lib/firmware/intel-ucode/: Is a directory
++ rc=0
++ '[' 0 '!=' 0 ']'
++ '[' '!' -x /sbin/grubby ']'
++ '[' -n /etc/grub.conf ']'
++ '[' -f /etc/grub.conf ']'
++ '[' -n /boot/efi/EFI/BOOT/grub.cfg ']'
++ '[' -f /boot/efi/EFI/BOOT/grub.cfg ']'
++ cfgGrub2=1
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' -a -z '' ']'
++ '[' -n '' -a -n '' ']'
+++ cat /proc/cpuinfo
+++ grep 'cpu model'
+++ cut -f2 -d:
+++ uniq -c
++ cpuinfo='      4  ICT Loongson-3 V0.4  FPU V0.1'
+++ uname -r
++ livekernel=4.19.90-5
++ '[' --update == --install ']'
++ '[' --update == --remove ']'
++ '[' --update == --update ']'
++ [[       4  ICT Loongson-3 V0.4  FPU V0.1 =~ Loongson-3 ]]
++ [[ 4.19.90-5 =~ 2k ]]
++ update
++ '[' '!' -f /boot/vmlinuz-4.19.90-5 ']'
++ INITRD=
++ '[' -f /boot/initramfs-4.19.90-5.img ']'
++ '[' -n '' ']'
++ INITRD='--initrd /boot/initramfs-4.19.90-5.img'
++ '[' -n '' ']'
++ DEVTREE=
++ '[' -n '' -a -f '' ']'
++ DEVTREEDIR=
++ '[' -n '' -a -d '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n 1 ']'
++ '[' -n '' ']'
++ /sbin/grubby --grub2 -c /boot/efi/EFI/BOOT/grub.cfg --update-kernel=/boot/vmlinuz-4.19.90-5 --initrd /boot/initramfs-4.19.90-5.img '--args= LANG=zh_CN.UTF-8'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ [[ 4.19.90-5 =~ kvmguest ]]
++ [[ 4.19.90-5 =~ 2k ]]
++ [[ 4.19.90-5 =~ kvmguest ]]
++ update
++ '[' '!' -f /boot/vmlinuz-4.19.90-5 ']'
++ INITRD=
++ '[' -f /boot/initramfs-4.19.90-5.img ']'
++ '[' -n '' ']'
++ INITRD='--initrd /boot/initramfs-4.19.90-5.img'
++ '[' -n '' ']'
++ DEVTREE=
++ '[' -n '' -a -f '' ']'
++ DEVTREEDIR=
++ '[' -n '' -a -d '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n 1 ']'
++ '[' -n '' ']'
++ /sbin/grubby --grub2 -c /boot/efi/EFI/BOOT/grub.cfg --update-kernel=/boot/vmlinuz-4.19.90-5 --initrd /boot/initramfs-4.19.90-5.img '--args= LANG=zh_CN.UTF-8'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -x /sbin/grub-to-pmon ']'
++ /sbin/grub-to-pmon
++ exit 0
++ /sbin/new-kernel-pkg --package kernel --rpmposttrans 4.19.90-5
++ PATH=/sbin:/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/lhx/.local/bin:/home/lhx/bin
++ lilo=/sbin/lilo
++ kernelName=vmlinuz
++ '[' -x ./grubby ']'
++ grubby=/sbin/grubby
++ '[' -f /etc/sysconfig/kernel ']'
++ . /etc/sysconfig/kernel
+++ UPDATEDEFAULT=yes
+++ DEFAULTKERNEL=kernel-kvm-guest-core
++ '[' -f /etc/sysconfig/uboot ']'
++ cfgGrub2=
++ cfgGrub2Efi=
++ cfgGrub=
++ cfgLilo=
++ cfgExtlinux=
++ cfguBoot=
++ runLilo=
++ grubConfig=
++ grub2Config=
++ grub2EfiConfig=
++ extlinuxConfig=
+++ uname -m
++ ARCH=mips64
++ '[' mips64 = ia64 ']'
++ '[' mips64 = ppc64 -o mips64 = ppc ']'
++ '[' mips64 = sparc -o mips64 = sparc64 ']'
++ '[' mips64 = s390 -o mips64 = s390x ']'
++ [[ mips64 =~ armv[5|7].*l ]]
++ [[ mips64 = \m\i\p\s\6\4 ]]
++ liloConfig=
+++ readlink -f /etc/grub.conf
++ grubConfig=/etc/grub.conf
+++ readlink -f /etc/grub2.cfg
++ grub2Config=/etc/grub2.cfg
++ '[' -f /etc/grub2.cfg ']'
+++ readlink -f /etc/grub2-efi.cfg
++ grub2Config=/boot/efi/EFI/BOOT/grub.cfg
++ bootPrefix=/boot
++ liloFlag=
++ isx86=
++ mode=
++ version=
++ initrd=
++ dracut=
++ dracuthostonly=
++ initrdfile=
++ devtreefile=
++ moddep=
++ verbose=
++ makedefault=
++ package=
++ mbkernel=
++ mbargs=
++ adddracutargs=
++ addplymouthinitrd=
++ '[' 4 -gt 0 ']'
++ case $1 in
++ [[ --package == --package\=* ]]
++ package=kernel
++ shift
++ shift
++ '[' 2 -gt 0 ']'
++ case $1 in
++ '[' -z '' ']'
++ mode=--rpmposttrans
++ shift
++ '[' 1 -gt 0 ']'
++ case $1 in
++ '[' -z --rpmposttrans ']'
++ '[' -z '' ']'
++ version=4.19.90-5
++ shift
++ '[' 0 -gt 0 ']'
++ '[' --rpmposttrans '!=' --install -a --rpmposttrans '!=' --remove -a --rpmposttrans '!=' --update -a --rpmposttrans '!=' --rpmposttrans ']'
++ '[' -z 4.19.90-5 ']'
++ '[' --rpmposttrans '!=' --install -a '' ']'
+++ echo
+++ cut -d . -f 1,2
++ kernelmajor=
++ '[' mips64 = ppc64 -o mips64 = ppc ']'
++ [[ -n '' ]]
++ kernelImage=/boot/vmlinuz-4.19.90-5
++ '[' -z '' ']'
++ INITRD_NAME_PREFIX=initrd
++ '[' -n '' ']'
+++ uname -m
++ '[' mips64 = ia64 ']'
++ initrdfile=/boot/initrd-4.19.90-5.img
++ '[' -n '' ']'
++ [[ mips64 =~ armv[5|7].*l ]]
++ '[' -n '' -o -n '' ']'
++ '[' --rpmposttrans == --install -a yes == yes -a -n kernel -a -n kernel-kvm-guest-core ']'
++ '[' '' == make ']'
++ '[' '' == remove ']'
++ '[' '' == make ']'
++ '[' '' == remove ']'
++ '[' '!' -x /sbin/grubby ']'
++ '[' -n /etc/grub.conf ']'
++ '[' -f /etc/grub.conf ']'
++ '[' -n /boot/efi/EFI/BOOT/grub.cfg ']'
++ '[' -f /boot/efi/EFI/BOOT/grub.cfg ']'
++ cfgGrub2=1
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' -a -z '' ']'
++ '[' -n '' -a -n '' ']'
+++ cat /proc/cpuinfo
+++ grep 'cpu model'
+++ cut -f2 -d:
+++ uniq -c
++ cpuinfo='      4  ICT Loongson-3 V0.4  FPU V0.1'
+++ uname -r
++ livekernel=4.19.90-5
++ '[' --rpmposttrans == --install ']'
++ '[' --rpmposttrans == --remove ']'
++ '[' --rpmposttrans == --update ']'
++ '[' --rpmposttrans == --rpmposttrans ']'
++ [[       4  ICT Loongson-3 V0.4  FPU V0.1 =~ Loongson-3 ]]
++ [[ 4.19.90-5 =~ kvmguest ]]
++ [[ 4.19.90-5 =~ 2k ]]
++ [[ 4.19.90-5 =~ kvmguest ]]
++ rpmposttrans
++ local files
++ local f
++ files='/etc/kernel/postinst.d/*[^~] /etc/kernel/postinst.d/4.19.90-5/*[^~]'
++ for f in '$files'
++ '[' -f /etc/kernel/postinst.d/51-dracut-rescue-postinst.sh ']'
++ '[' -x /etc/kernel/postinst.d/51-dracut-rescue-postinst.sh ']'
++ /etc/kernel/postinst.d/51-dracut-rescue-postinst.sh 4.19.90-5 /boot/vmlinuz-4.19.90-5
++ for f in '$files'
++ '[' -f '/etc/kernel/postinst.d/4.19.90-5/*[^~]' ']'
++ continue
++ '[' -n '' ']'
++ '[' -x /sbin/grub-to-pmon ']'
++ /sbin/grub-to-pmon
++ exit 0
++ [[ -d /boot/loader/entries ]]
++ [[ -L /boot/loader/entries ]]
++ exit 0
+
+Script done on 2021年01月15日 星期五 17时52分07秒

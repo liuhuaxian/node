@@ -1,0 +1,147 @@
+/etc/xdg/autostart/atmmode.desktop
+/etc/xdg/autostart/screennoidle.desktop
+/usr/lib/systemd/system/redflag-update.service
+
+开机自启的命令
+gsettings set org.gnome.desktop.session idle-delay 0 
+/usr/bin/atmmode.sh 1
+/usr/bin/redflag-update.sh
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+atmmode.sh 1
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings '["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/atmmode/", "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/unatmmode/"]'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/atmmode/   name   atmmode
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/atmmode/ command '/usr/bin/atmmode.sh 1'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/atmmode/ binding '<Ctrl>F5'
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/unatmmode/ name unatmmode
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/unatmmode/ command '/usr/bin/atmmode.sh 0'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/unatmmode/ binding '<Ctrl>F6'
+
+//隐藏屏幕键盘
+dbus-send --type=method_call --dest=org.gnome.Caribou.Keyboard /org/gnome/Caribou/Keyboard org.gnome.Caribou.Keyboard.Hide uint32:0
+
+用户切换
+gsettings set org.gnome.desktop.lockdown disable-user-switching true
+
+锁屏
+gsettings set org.gnome.desktop.lockdown disable-lock-screen true
+
+桌面默认图标
+gsettings set org.gnome.nautilus.desktop home-icon-visible false
+gsettings set org.gnome.nautilus.desktop network-icon-visible false
+gsettings set org.gnome.nautilus.desktop trash-icon-visible false
+gsettings set org.gnome.nautilus.desktop volumes-visible false
+
+活动视图热键
+gsettings set org.gnome.mutter overlay-key '""'  ===>此处与L键有关系
+gsettings set org.gnome.shell.keybindings toggle-message-tray '[]'
+gsettings set org.gnome.shell.keybindings open-application-menu '[]'
+gsettings set org.gnome.shell.keybindings toggle-application-view '[]'
+gsettings set org.gnome.shell.keybindings toggle-overview '[]'
+gsettings set org.gnome.desktop.wm.keybindings switch-applications '[]'
+gsettings set org.gnome.desktop.wm.keybindings switch-
+
+
+
+applications-backward '[]'
+
+顶部面板
+gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell --method org.gnome.Shell.Eval 'Main.panel.actor.get_parent().visible=false;'
+底部面板
+gnome-shell-extension-tool -d window-list@gnome-shell-extensions.gcampax.github.com
+通知栏
+gnome-shell-extension-tool -e insensitivetray@tovotu.de
+左上角屏幕边缘
+gnome-shell-extension-tool -e nohotcorner@azuri.free.fr
+鼠标右键
+xmodmap -e 'pointer = 1 2 99'
+禁止触摸屏手势
+gnome-shell-extension-tool -e disable-gestures@mattbell.com.au
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+atmmode.sh 0
+
+设置快捷键
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings '["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/atmmode/", "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/unatmmode/"]
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/atmmode/ name atmmode
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/atmmode/ command '/usr/bin/atmmode.sh 1'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/atmmode/ binding '<Ctrl>F5'
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/unatmmode/ name unatmmode
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/unatmmode/ command '/usr/bin/atmmode.sh 0'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/unatmmode/ 
+
+
+
+用户切换
+gsettings set org.gnome.desktop.lockdown disable-user-switching false
+
+锁屏
+gsettings set org.gnome.desktop.lockdown disable-lock-screen false
+
+桌面默认图标
+gsettings set org.gnome.nautilus.desktop home-icon-visible true
+gsettings set org.gnome.nautilus.desktop network-icon-visible true
+gsettings set org.gnome.nautilus.desktop trash-icon-visible true
+gsettings set org.gnome.nautilus.desktop volumes-visible true
+
+活动视图热键
+gsettings set org.gnome.mutter overlay-key '<Super>l'
+gsettings set org.gnome.shell.keybindings toggle-message-tray '['\''<Super>m'\'']'
+gsettings set org.gnome.shell.keybindings open-application-menu '['\''<Super>F10'\'']'
+gsettings set org.gnome.shell.keybindings toggle-application-view '['\''<Super>a'\'']'
+gsettings set org.gnome.shell.keybindings toggle-overview '['\''<Super>s'\'']'
+gsettings set org.gnome.desktop.wm.keybindings switch-applications '['\''<Super>Tab'\'', '\''<Alt>Tab'\'']'
+gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward '['\''<Shift><Super>Tab'\'', '\''<Shift><Alt>Tab'\'']'
+顶部面板
+gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell --method org.gnome.Shell.Eval 'Main.panel.actor.get_parent().visible=true;'
+底部面板
+gnome-shell-extension-tool -e window-list@gnome-shell-extensions.gcampax.github.com
+通知栏
+gnome-shell-extension-tool -d insensitivetray@tovotu.de
+左上角屏幕边缘
+gnome-shell-extension-tool -d nohotcorner@azuri.free.fr
+鼠标右键
+xmodmap -e 'pointer = 1 2 3'
+禁止触摸屏手势
+gnome-shell-extension-tool -e disable-gestures@mattbell.com.au
+
+
+
+set org.gnome.settings-daemon.plugins.media-keys custom-keybindings '["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/switch-scream-back/", "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/switch-scream-forward/"]'
+
+
+
+
+
+
+ caribou0                                              aarch64                                  0.4.21-12.1.el7                                  epel                                  159 k
+ caribou0-antler                                       aarch64                                  0.4.21-12.1.el7                                  epel                                   16 k
+ caribou0-devel                                        aarch64                                  0.4.21-12.1.el7                                  epel                                   23 k
+ caribou0-gtk2-module                                  aarch64                                  0.4.21-12.1.el7                                  epel                                   24 k
+ caribou0-gtk3-module 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
